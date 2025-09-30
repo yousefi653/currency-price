@@ -6,23 +6,24 @@ No need to open websites — just run the command and get the latest rates insta
 ## Installation
 
 1. Clone the repository:
-    git clone https://github.com/yousefi653/currency-price.git
-    cd /currency-price
+git clone https://github.com/yousefi653/currency-price.git
+cd /currency-price
 
 2. Install dependencies:
-    pip install -r requirements.txt
+pip install -r requirements.txt
 
 ## Usage
 
 1. Run the program:
-    python main.py
+python main.py
 
 ### Examples:
 
 Get USD price:
-    price (-s or --symbol) USD
+price (-s or --symbol) USD
+
 Get EUR price:
-    price (-s or --symbol) EUR
+price (-s or --symbol) EUR
 
 ## Features
 
