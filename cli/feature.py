@@ -101,7 +101,7 @@ def check_command(command):
         if command == shlex.split("list --help"):
             return True
         for item in templates.values():
-            if (len(command) == 3) and (command[:2] == shlex.split(item)):
+            if (2<=len(command)<=3) and (command[:2] == shlex.split(item)):
                 return True
         return "\nPlease see list --help"
 
