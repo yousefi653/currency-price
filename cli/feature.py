@@ -13,27 +13,28 @@ def price(symbol):
     data = get_data()
     symbol = symbol.upper()
 
-    for type in data:
-        for item in data[type]:
-            if item["symbol"] == symbol:
+    if data:
+        for type in data:
+            for item in data[type]:
+                if item["symbol"] == symbol:
 
-                if type == "cryptocurrency":
-                    unit = "Dollar $"
+                    if type == "cryptocurrency":
+                        unit = "Dollar $"
+                        print(
+                            f"\ndate: {item['date']}\n{20 * '-'}\ntime: {item['time']}\n{20 * '-'}\nprice: {float(item['price']):,} {unit}\n{20 * '-'}\nname: {item['name_en']}\n{20 * '-'}\nsymbol: {item['symbol']}\n{20 * '-'}\nmarket_cap: {item['market_cap']:,}\n{20 * '-'}\nchange_percent: {item['change_percent']:.2f}%\n"
+                        )
+                        return True
+
+                    if item["unit"] == "تومان":
+                        unit = "Toman"
+                    else:
+                        unit = "Dollar $"
                     print(
-                        f"\ndate: {item['date']}\n{20 * '-'}\ntime: {item['time']}\n{20 * '-'}\nprice: {float(item['price']):,} {unit}\n{20 * '-'}\nname: {item['name_en']}\n{20 * '-'}\nsymbol: {item['symbol']}\n{20 * '-'}\nmarket_cap: {item['market_cap']:,}\n{20 * '-'}\nchange_percent: {item['change_percent']:.2f}%\n"
+                        f"\ndate: {item['date']}\n{20 * '-'}\ntime: {item['time']}\n{20 * '-'}\nprice: {item['price']:,} {unit}\n{20 * '-'}\nname: {item['name_en']}\n{20 * '-'}\nsymbol: {item['symbol']}\n{20 * '-'}\ndiffrance: {item['change_value']:,} {unit}\n{20 * '-'}\nchange_percent: {item['change_percent']:.2f}%\n\n(Changes compared to yesterday)\n"
                     )
                     return True
-
-                if item["unit"] == "تومان":
-                    unit = "Toman"
-                else:
-                    unit = "Dollar $"
-                print(
-                    f"\ndate: {item['date']}\n{20 * '-'}\ntime: {item['time']}\n{20 * '-'}\nprice: {item['price']:,} {unit}\n{20 * '-'}\nname: {item['name_en']}\n{20 * '-'}\nsymbol: {item['symbol']}\n{20 * '-'}\ndiffrance: {item['change_value']:,} {unit}\n{20 * '-'}\nchange_percent: {item['change_percent']:.2f}%\n\n(Changes compared to yesterday)\n"
-                )
-                return True
-    print(ValueError(f"{symbol} not found!!!!"))
-    return False
+        print(ValueError(f"{symbol} not found!!!!"))
+        return False
 
 
 def get_data():
